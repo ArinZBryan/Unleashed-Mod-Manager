@@ -24,7 +24,7 @@ namespace Unleash.Compression
                     FileName = Program.quickbms,
                     Arguments = $"-Y -R \"{Program.arcsys}\" \"{filepath}\" \"{outpath}\\\"",
                     WorkingDirectory = Path.GetDirectoryName(filepath),
-                    UseShellExecute = false
+                    UseShellExecute = true
                 };
                 process.StartInfo = startInfo;
                 process.Start();
@@ -44,7 +44,7 @@ namespace Unleash.Compression
                     FileName = Program.quickbms,
                     Arguments = $"-Y -R \"{Program.arcsys}\" \"{filepath}\" \"{outpath}\\\"",
                     WorkingDirectory = Path.GetDirectoryName(filepath),
-                    UseShellExecute = false
+                    UseShellExecute = true
                 };
                 process.StartInfo = startInfo;
                 process.Start();
