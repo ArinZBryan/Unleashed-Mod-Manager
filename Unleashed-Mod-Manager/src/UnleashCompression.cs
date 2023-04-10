@@ -5,6 +5,8 @@ using System.Diagnostics;
 using Unleash.Serialisers;
 using Unleash.Environment3;
 using Unleash.Globalisation;
+using Unleash.Properties;
+using System.Linq;
 
 namespace Unleash.Compression
 {
@@ -16,11 +18,13 @@ namespace Unleash.Compression
         public static void XCompression(string filepath) {
             if (Verification.Decompressed(filepath)) {
                 Process process = new Process();
+                string outpath = Settings.Default.Path_GameDirectory.Substring(0, Settings.Default.Path_GameDirectory.Length - Settings.Default.Path_GameDirectory.Split('\\').Last().Length);
                 ProcessStartInfo startInfo = new ProcessStartInfo {
                     WindowStyle = ProcessWindowStyle.Hidden,
                     FileName = Program.quickbms,
-                    Arguments = $"-Y -R \"{Program.xcompress_file}\" \"{filepath}\"",
-                    WorkingDirectory = Path.GetDirectoryName(filepath)
+                    Arguments = $"-Y -R \"{Program.arcsys}\" \"{filepath}\" \"{outpath}\\\"",
+                    WorkingDirectory = Path.GetDirectoryName(filepath),
+                    UseShellExecute = false
                 };
                 process.StartInfo = startInfo;
                 process.Start();
@@ -34,11 +38,13 @@ namespace Unleash.Compression
         public static void SEGS(string filepath) {
             if (Verification.Decompressed(filepath)) {
                 Process process = new Process();
+                string outpath = Settings.Default.Path_GameDirectory.Substring(0, Settings.Default.Path_GameDirectory.Length - Settings.Default.Path_GameDirectory.Split('\\').Last().Length);
                 ProcessStartInfo startInfo = new ProcessStartInfo {
                     WindowStyle = ProcessWindowStyle.Hidden,
                     FileName = Program.quickbms,
-                    Arguments = $"-Y -R \"{Program.arcsys}\" \"{filepath}\"",
-                    WorkingDirectory = Path.GetDirectoryName(filepath)
+                    Arguments = $"-Y -R \"{Program.arcsys}\" \"{filepath}\" \"{outpath}\\\"",
+                    WorkingDirectory = Path.GetDirectoryName(filepath),
+                    UseShellExecute = false
                 };
                 process.StartInfo = startInfo;
                 process.Start();
